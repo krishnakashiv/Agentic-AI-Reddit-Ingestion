@@ -3,7 +3,7 @@ import google.generativeai as genai
 import re
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash-lite")
 
 def extract_links(text):
     return re.findall(r'(https?://\S+)', text)

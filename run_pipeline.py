@@ -7,7 +7,7 @@ from core.db_publisher import publish_to_db
 
 all_data = []
 
-for post in fetch_posts("netsec", limit=25):
+for post in fetch_posts("cybersecurity", limit=25):
     print("\n\n\n")
 
     title = post.title
@@ -15,11 +15,12 @@ for post in fetch_posts("netsec", limit=25):
     post_id = post.id
     post_url = post.url
 
-    print(f"Processing Post ID: {post_id}, Title: {title}")
+    print(f"Processing Post ID: {post_id}, Title: {title}, URL: {post_url}")
     print(f"Body: {body[:100]}...")  # Print first 100 characters of body for brevity
 
     # Step 1: Relevancy check
     if not is_post_relevant(title, body):
+        print(f"Post ID {post_id} is not relevant. Skipping...")
         continue
 
     # Step 2: Analyze post (summary + extract links from body)
